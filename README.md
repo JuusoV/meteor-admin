@@ -305,7 +305,7 @@ Here you can customise the look and feel of the dashboard.
 `widgets` is an array of objects specifying template names and data contexts. Make sure to specify the `class` in the data context. If set, the `widgets` property will override the collection widgets which appear by default.
 
 #### Extending Dashboard ####
-There are few things you can do to integrate your package with meteor-admin. Remember to wrap it in Meteor.startup on client.
+There are few things you can do to integrate your package with meteor-admin. To do that create file in your client folder and wrap your customized elements inside Meteor.startup function.
 
 #####Create custom path to admin dashboard#####
 
@@ -318,7 +318,8 @@ Note: you can omit the leading slash (it will be inserted automatically).
 #####Add sidebar item with single link#####
 
 ```
-AdminDashboard.addSidebarItem 'New User', AdminDashboard.path('/Users/new'), icon: 'plus'
+Meteor.startup(() ->
+AdminDashboard.addSidebarItem 'New User', AdminDashboard.path('/Users/new'), icon: 'plus')
 ```
 
 #####Add sidebar item with multiple links#####
